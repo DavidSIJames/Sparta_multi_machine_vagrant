@@ -8,6 +8,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "app" do |app|
     app.vm.box = "ubuntu/xenial64"
     app.vm.network "private_network", ip: "192.168.10.25"
+    app.vm.synced_folder ".", "/home/vagrant/code"
     app.vm.provision "shell", path:"environment/app/provision_app.sh", privileged: false
   end
   config.vm.define "db" do |db|
